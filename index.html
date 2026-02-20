@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Te amo</title>
 
+<style>
+    body{
+        margin:0;
+        height:100vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        background:linear-gradient(135deg,#ff4d6d,#ff99ac);
+        overflow:hidden;
+        font-family:'Segoe UI', sans-serif;
+        transition:1s;
+    }
+
+    h1{
+        color:white;
+        font-size:80px;
+        text-shadow:0 0 20px rgba(255,255,255,0.8);
+        white-space:nowrap;
+        border-right:4px solid white;
+        width:0;
+        overflow:hidden;
+        animation: escribir 4s steps(12) forwards, blink 1s infinite;
+        margin-bottom:40px;
+    }
+
+    @keyframes escribir{
+        from{width:0}
+        to{width:12ch}
+    }
+
+    @keyframes blink{
+        50%{border-color:transparent}
+    }
+
+    button{
+        padding:15px 35px;
+        font-size:20px;
+        border:none;
+        border-radius:30px;
+        background:white;
+        color:#ff4d6d;
+        cursor:pointer;
+        box-shadow:0 0 15px rgba(0,0,0,0.2);
+        transition:0.3s;
+    }
+
+    button:hover{
+        transform:scale(1.1);
+    }
+
+    #mensaje{
+        color:white;
+        font-size:40px;
+        margin-top:30px;
+        opacity:0;
+        transition:1s;
+        text-align:center;
+    }
+
+    .corazon{
+        position:absolute;
+        color:#fff;
+        font-size:25px;
+        animation: flotar 6s linear infinite;
+    }
+
+    @keyframes flotar{
+        0%{ transform: translateY(100vh) scale(0); opacity:1; }
+        100%{ transform: translateY(-10vh) scale(1.5); opacity:0; }
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Te amo ❤️</h1>
+
+<button onclick="sorpresa()">Presiona aquí 💌</button>
+
+<div id="mensaje">Eres lo mejor que me ha pasado 💖</div>
+
+<script>
+function crearCorazon(){
+    const corazon=document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.innerHTML="❤";
+    corazon.style.left=Math.random()*100+"vw";
+    corazon.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(corazon);
+    setTimeout(()=>{corazon.remove();},6000);
+}
+setInterval(crearCorazon,300);
+
+function sorpresa(){
+    document.getElementById("mensaje").style.opacity="1";
+    document.body.style.background="linear-gradient(135deg,#ff758f,#ffb3c1)";
+}
+</script>
+
+</body>
+</html>
